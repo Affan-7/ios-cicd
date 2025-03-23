@@ -12,6 +12,11 @@ end
 
 desc 'Builds the iOS project'
 lane :build do
-    gym(scheme: "AnyApp") # Replace with your actual scheme name
+    gym(scheme: "AnyApp")
+    export_method: "development",
+    codesigning_identity: "",  # Empty identity disables signing
+    export_options: {
+        provisioningProfiles: {}  # Prevents Xcode from requiring a profile
+    }
 end
 end
