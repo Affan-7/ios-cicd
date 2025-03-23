@@ -30,5 +30,8 @@ jobs:
       - name: Build Project
         run: bundle exec fastlane build
 
+      - name: ls
+        run: ls
+
       - name: Run tests
         run: bundle exec fastlane unit_test
