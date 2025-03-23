@@ -15,7 +15,7 @@ lane :build do
     gym(
     scheme: "AnyApp",
     export_method: "development",
-    disable_code_signing: true, # Prevents signing issues
+    skip_codesigning: true,
     export_options: {
         provisioningProfiles: {}  # Prevents Xcode from requiring a profile
     }
