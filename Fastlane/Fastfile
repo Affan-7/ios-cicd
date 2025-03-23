@@ -16,9 +16,6 @@ lane :build do
     scheme: "AnyApp",
     export_method: "development",
     skip_codesigning: true,
-    export_options: {
-        provisioningProfiles: {}  # Prevents Xcode from requiring a profile
-    }
     )
 end
 end
