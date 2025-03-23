@@ -13,8 +13,8 @@ end
 desc 'Builds the iOS project without code signing'
 lane :build do
     gym(
-    scheme: "AnyApp",
-    export_method: "none",
+    skip_archive: false, 
+    skip_package_ipa: true,       
     skip_codesigning: true,
     )
 end
