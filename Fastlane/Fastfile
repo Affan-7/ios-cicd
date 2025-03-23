@@ -5,18 +5,20 @@ platform :ios do
 desc 'Builds project and executes unit tests'
 lane :unit_test do |options|
     scan(
-    clean: options[:clean],
-    skip_package_dependencies_resolution: options[:skip_package_dependencies_resolution]
+    clean: options.fetch(:clean, true), # Default: clean = true
+    skip_package_dependencies_resolution: options.fetch(:skip_package_dependencies_resolution, false) # Default: false
     )
 end
 
-desc 'Builds the iOS project'
+desc 'Builds the iOS project without code signing'
 lane :build do
-    gym(scheme: "AnyApp")
+    gym(
+    scheme: "AnyApp",
     export_method: "development",
-    codesigning_identity: "",  # Empty identity disables signing
+    disable_code_signing: true, # Prevents signing issues
     export_options: {
         provisioningProfiles: {}  # Prevents Xcode from requiring a profile
     }
+    )
 end
 end
